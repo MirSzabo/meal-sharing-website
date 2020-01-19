@@ -7,7 +7,7 @@ router.use(bodyParser.json());
 
 //Body parser middleware
 router.use(bodyParser.urlencoded({ extended: false }));
-router.use(bodyParser.json());
+router.use(bodyParser.json()); //app.use(bodyParser.json()) ?????
 
 router.get("/", (req, res) => {
   console.log(req.query);
@@ -101,9 +101,10 @@ router.get("/", (req, res) => {
 
 //api/meals/	POST	Adds a new meal	POST api/meals/
 router.post("/", (req, res) => {
+  //const { body } = req;
   const meal = req.body;
   console.log("meal:", meal);
-  pool.query("INSERT into meal SET ?", meal, (error, results, fields) => {
+  pool.query("INSERT into meal SET ?", [meal], (error, results, fields) => {
     if (error) {
       return res.send(error);
     }
@@ -121,6 +122,7 @@ router.get("/:id", (req, res) => {
         return res.send(error);
       }
       res.json(results);
+      //res.send("added succesfully")
     }
   );
 });

@@ -63,9 +63,11 @@ router.get("/", (req, res) => {
   //api/reviews/{id}	DELETE	Deletes the review by id	DELETE api/reviews/2
   router.delete("/:id", (req, res) => {
     console.log(req.body);
+    const { id } = req.params;
     pool.query(
       "DELETE FROM `review` WHERE `id`=?",
-      [req.body.id],
+      [id],
+      //[req.body.id],
       (error, results, fields) => {
         if (error) {
           return res.send(error);

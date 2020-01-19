@@ -76,7 +76,7 @@ h1 {
   border-radius: 100px;
   width: 90%;
   transition: all 0.2s;
-  margin-right: -3.25rem;
+  border: none;
 }
 .search__input:focus {
   outline: none;
@@ -97,11 +97,7 @@ h1 {
 .search__button:active {
   transform: translateY(2px);
 }
-.search__icon {
-  height: 2rem;
-  width: 2rem;
-  border: none;
-}
+
 .user-nav {
   display: flex;
   align-self: stretch;
@@ -115,19 +111,13 @@ padding: 0 5rem;
   display: flex;
   align-items: center;
 }
-.user-nav__icon {
-  height: 2.25rem;
-  width: 2.25rem;
-  fill: var(--color-grey-dark-2);
-  margin: 0 1rem;;
-}
 
 .image-container {
-  height: 70vh;
   position: relative;
   text-align: center;
   color: white;
 }
+
 h2 {
   position: absolute;
   top: 50%;
@@ -135,9 +125,10 @@ h2 {
   transform: translate(-50%, -50%);
   font-size: 3vw;
 }
+
 .main_picture {
   width: 100%;
-  object-fit: contain;
+  object-fit: scale-down;
 }
 
 .container {
@@ -155,12 +146,64 @@ h2 {
 
 .sidebar {
   background-color: var(--color-grey-dark-1);
-
   flex: 0 0 18%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.side-nav {
+  font-size: 1.4rem;
+  list-style: none;
+  margin-top: 3.5rem;;
+}
+.side-nav__item {
+  position: relative;
+
 }
 
+.side-nav__item:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
+.side-nav__item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 3px;
+  background-color: var(--color-primary-light);
+  transform: scaleY(0);
+  transition: transform .2s, width .4s .2s;
+}
+.side-nav__item:hover::before {
+  transform: scaleY(1);
+  width: 100%;
+}
+.side-nav__link:link {
+  color: var(--color-grey-light-1);
+  text-decoration: none;
+  text-transform: uppercase;
+  display: block;
+  padding: 1.5rem 3rem;
+}
+.side-nav__link:visited {
+  color: var(--color-grey-light-1);
+  text-decoration: none;
+  text-transform: uppercase;
+  display: block;
+  padding: 1.5rem 3rem;
+}
+
+
+.legal {
+  font-size: 1.2rem;
+  color: var(color-grey-light-4);
+  text-align: center;
+  padding: 2.5rem;
+}
 .meal-view {
   background-color: #fff;
-
+  height: 80rem; /*toto vymazat*/
   flex: 1;
 }
