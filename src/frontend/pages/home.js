@@ -1,15 +1,59 @@
 function renderMeals() {
   fetch("/api/meals")
     .then(res => res.json())
-   // .then(console.log);
-   .then(data => {
-     data.map(item => {
-       const list = document.getElementById("meals");
-       const checkItem = document.createElement("li");
-       checkItem.innerHTML = `<input type="checkbox" value=${item.id}>${item.title}</input>`;
-       list.appendChild(checkItem);
-     })
-   })
+    .then(data => {
+      data
+        .filter(item => {
+          return item.id <= 21;
+        })
+        .map(item => {
+          const ulMeals = document.getElementById("meals");
+          const liMeal = document.createElement("li");
+
+          liMeal.innerHTML = `
+       <div class="one-meal">
+        <div>
+          <img class="meal-image"
+          src="https://source.unsplash.com/200x200?${item.title}"
+          alt="${item.title}"
+         </div>                             
+        <div class="one-meal__heading">${item.title}</div>
+        <div class="one-meal__location">${item.location}</div>
+        <div class="one-meal__price">${item.price} DKK</div>
+       </div>`;
+          ulMeals.appendChild(liMeal);
+        });
+    });
+}
+
+function renderReviews() {
+  fetch("/api/reviews")
+    .then(res => res.json())
+    .then(data => {
+      data
+        .filter(item => {
+          console.log(item.id);
+          return item.id <= 31;
+        })
+        .map(item => {
+          const ulReviews = document.getElementById("reviews");
+          const liReview = document.createElement("li");
+
+          liReview.innerHTML = `
+       <div class="one-review">
+       <div class="one-review__description">${item.description}</div>
+        <div>
+          <img class="review-image"
+          src="https://source.unsplash.com/200x200?${item.name}"
+          alt="${item.name}"
+         </div>                             
+        <div class="one-review__name">${item.name}</div>
+        <div class="one-review__date">${item.created_date}</div>
+        <div class="one-review__stars">${item.stars}</div>
+       </div>`;
+        ulReviews.appendChild(liReview);
+        });
+    });
 }
 
 function homeRouter(req, router) {
@@ -35,22 +79,18 @@ function homeRouter(req, router) {
       </div>
       <div class="content">
         <nav class="sidebar">
-          <ul class"side-nav">
-            <li class="side-nav__item>
-              <a href="/meals"></a>
-                <a href="/meals" class="side-nav__link">Meals</a>
+          <ul class="side-nav">
+            <li class="side-nav__item">
+                <a href="/" class="side-nav__link"><span>Home</span></a>
             </li>
-            <li class="side-nav__item>
-              <a href="/reviews"></a>
-                <a href="/reviews" class="side-nav__link">Add Meal</a>
+            <li class="side-nav__item">
+                <a href="/meals" class="side-nav__link">Create a Meal</a>
             </li>
-            <li class="side-nav__item>
-              <a href="/reviews"></a>
+            <li class="side-nav__item">
                 <a href="/reviews" class="side-nav__link">Reviews</a>
             </li>
             </li>
-            <li class="side-nav__item>
-              <a href="/reviews"></a>
+            <li class="side-nav__item">
                 <a href="/reviews" class="side-nav__link">Write us</a>
             </li>
           </ul>
@@ -59,14 +99,20 @@ function homeRouter(req, router) {
             <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
           </div>
         </nav>
-        <main class="meal-view"> 
-          <ul id="meals" class="meals"></ul>
+        <main class="main-view">
+          <div class="meal-description">
+            <ul id="meals" class="meals"></ul>
+          </div>
+          <figure class="user-reviews">
+            <ul id="reviews" class="reviews"></ul>
+          </figure>
         </main>
       </div>
     </div>
   </body>
   `;
   renderMeals();
+  renderReviews();
 }
 
 export default homeRouter;
