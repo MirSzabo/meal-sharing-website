@@ -10,6 +10,7 @@ To run `npm run dev`
 - [NodeJs](https://nodejs.org/en/) - Server Environment
 
 DB tables can be created like so:
+```
 CREATE TABLE `meal` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
@@ -47,3 +48,4 @@ CREATE TABLE `review` (
   KEY `meal_id` (`meal_id`),
   CONSTRAINT `review_ibfk_1` FOREIGN KEY (`meal_id`) REFERENCES `meal` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+```
