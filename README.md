@@ -1,16 +1,8 @@
-### Prerequisites
-- Postman
-- MySQL Workbench
-- [A heroku user](https://heroku.com) 
-
 ### Installing
 To install run `npm install`
 
 ## 🎈 Usage <a name="usage"></a>
 To run `npm run dev`
-
-## 🚀 Deployment <a name = "deployment"></a>
-Set Heroku with automated builds to the master branch.  push your code to the `master` branch. 
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 - [Mysql](https://www.npmjs.com/package/mysql) - Database
