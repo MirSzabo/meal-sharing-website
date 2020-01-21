@@ -11,15 +11,18 @@ function renderMeals() {
           const liMeal = document.createElement("li");
 
           liMeal.innerHTML = `
-       <div class="one-meal">
-        <div>
-          <img class="meal-image"
-          src="https://source.unsplash.com/200x200?${item.title}"
-          alt="${item.title}"
-         </div>                             
-        <div class="one-meal__heading">${item.title}</div>
-        <div class="one-meal__location">${item.location}</div>
-        <div class="one-meal__price">${item.price} DKK</div>
+       <div class="meal">
+       <div class="image-container">
+        <img class="meal-image"
+        src="https://source.unsplash.com/200x200?${item.title}"
+        alt="${item.title}">
+        </div>
+        <div class="meal-container">                            
+          <div class="meal__heading">${item.title}</div>
+          <div class="meal__location">${item.location}</div>
+          <div class="meal__price">${item.price} DKK</div>
+          <a href="/meals/${item.id}" class="button">Book now</a>
+        </div> 
        </div>`;
           ulMeals.appendChild(liMeal);
         });
@@ -36,21 +39,23 @@ function renderReviews() {
           return item.id <= 31;
         })
         .map(item => {
-          const ulReviews = document.getElementById("reviews");
+          const ulReviews = document.getElementById("reviews-list");
           const liReview = document.createElement("li");
 
           liReview.innerHTML = `
-       <div class="one-review">
-       <div class="one-review__description">${item.description}</div>
-        <div>
-          <img class="review-image"
-          src="https://source.unsplash.com/200x200?${item.name}"
-          alt="${item.name}"
-         </div>                             
-        <div class="one-review__name">${item.name}</div>
-        <div class="one-review__date">${item.created_date}</div>
-        <div class="one-review__stars">${item.stars}</div>
-       </div>`;
+      <figure class="review">
+        <blockquote class="review__text">${item.description}</blockquote>
+          <figcaption class="review__user">
+            <img class="review__photo"
+            src="https://source.unsplash.com/200x200?${item.name}"
+            alt="${item.name}">
+            <div class="review__user-box">
+              <p class="review__user-name">${item.name}</p>
+              <p class="review__user-date">${item.created_date}</p>
+            </div>
+            <div class="review__rating">${item.stars}</div>
+          </figcaption>
+        </figure>`;
         ulReviews.appendChild(liReview);
         });
     });
@@ -81,7 +86,7 @@ function homeRouter(req, router) {
         <nav class="sidebar">
           <ul class="side-nav">
             <li class="side-nav__item">
-                <a href="/" class="side-nav__link"><span>Home</span></a>
+                <a href="/" class="side-nav__link">Home</a>
             </li>
             <li class="side-nav__item">
                 <a href="/meals" class="side-nav__link">Create a Meal</a>
@@ -101,10 +106,12 @@ function homeRouter(req, router) {
         </nav>
         <main class="main-view">
           <div class="meal-description">
-            <ul id="meals" class="meals"></ul>
+            <ul id="meals" class="meals-list"></ul>
+            <a href="/meals" class="more-info">Show all<span>&rarr;</span></a>
           </div>
           <figure class="user-reviews">
-            <ul id="reviews" class="reviews"></ul>
+            <ul id="reviews-list"></ul>
+            <a href="/reviews" class="more-info">Show all<span>&rarr;</span></a>
           </figure>
         </main>
       </div>

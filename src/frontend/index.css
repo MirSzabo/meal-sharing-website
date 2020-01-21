@@ -200,10 +200,11 @@ h2 {
   color: var(color-grey-light-4);
   text-align: center;
   padding: 2.5rem;
+  text-decoration: none;
 }
 .main-view {
   background-color: var(color-grey-light-1);
-  height: 80rem; /*toto vymazat*/
+  font-size: 1.4rem;
   flex: 1;
   display: flex;
   padding: 4.5rem;
@@ -213,12 +214,126 @@ h2 {
 .meal-description {
   flex: 0 0 60%;
   margin-right: 4.5rem;
-  background-color: #fff;
-  box-shadow: 0 2rem 5rem rgba(0,0,0,0.06);
 }
 
+.meals-list {
+  list-style: none;
+}
+
+.meal-list-items {
+  display: flex;
+  flex-direction: row;
+}
+
+.meal {
+  background-color: #fff;
+  box-shadow: 0 2rem 5rem rgba(0,0,0,0.06);
+  padding: 3rem;
+  margin-bottom: 3.5rem;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+}
+
+.meal-image {
+  height: 18rem;
+  width: 18rem;
+  margin-right: 1.5rem;
+}
+
+.meal__heading {
+  margin-bottom: 2rem;
+  font-size: 2.2rem;
+  font-weight: 600;
+}
+
+.meal__location {
+
+}
+
+.meal__price {
+
+}
+
+.button {
+  background-color: var(--color-primary-light);
+  border: none;
+  color: white;
+  padding: 1rem 1.5rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.8rem;
+  margin: 2rem 5rem;
+  cursor: pointer;
+  }
 
 .user-reviews {
   flex: 1;
-
 }
+#reviews-list {
+  list-style: none;
+}
+.review {
+  background-color: #fff;
+  box-shadow: 0 2rem 5rem rgba(0,0,0,0.06);
+  padding: 3rem;
+  margin-bottom: 3.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.review__text {
+  margin-bottom: 2rem;
+  z-index: 10;
+  position: relative;
+}
+.review__user {
+  display: flex;
+  align-items: center;
+}
+.review__photo {
+  height: 4.5rem;
+  width: 4.5rem;
+  border-radius: 50%;
+  margin-right: 1.5rem;
+}
+.review__user-box {
+  margin-right: auto;
+}
+.review__user-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  margin-bottom: .4rem;
+}
+.review__user-date {
+  font-size: 1rem;
+  color: var(--color-grey-dark-3);
+}
+.review__rating {
+  color: var(--color-primary-light);
+  font-size: 2.2rem;
+  font-weight: 300;
+}
+.review::before {
+  content: "\201C";
+  position: absolute;
+  top: -2.75rem;
+  left: -1rem;
+  line-height: 1;
+  font-size: 20rem;
+  color: var(--color-grey-light-2);
+  font-family: sans-serif;
+  z-index: 1;
+}
+
+.more-info {
+  cursor: pointer;
+  margin-left: 3px;
+  display: inline-block;
+  text-decoration: none;
+  color: var(--color-grey-dark-2);
+}
+
+
