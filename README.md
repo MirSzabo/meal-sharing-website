@@ -9,6 +9,7 @@ To run `npm run dev`
 - [Express](https://expressjs.com/) - Server Framework
 - [NodeJs](https://nodejs.org/en/) - Server Environment
 
+create env file
 DB tables can be created like so:
 ```
 CREATE TABLE `meal` (
