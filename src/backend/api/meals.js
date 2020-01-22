@@ -101,14 +101,13 @@ router.get("/", (req, res) => {
 
 //api/meals/	POST	Adds a new meal	POST api/meals/
 router.post("/", (req, res) => {
-  //const { body } = req;
   const meal = req.body;
   console.log("meal:", meal);
   pool.query("INSERT into meal SET ?", [meal], (error, results, fields) => {
     if (error) {
       return res.send(error);
     }
-    res.json(results);
+    res.send("Meal added successfully!");
   });
 });
 
