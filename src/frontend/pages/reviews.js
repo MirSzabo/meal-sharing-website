@@ -1,13 +1,20 @@
-  function renderReviews() {
-    fetch("/api/reviews")
-      .then(res => res.json())
-      .then(data => {
-        data
-          .map(item => {
-            const ulReviews = document.getElementById("reviews-list");
-            const liReview = document.createElement("li");
-  
-            liReview.innerHTML = `
+function renderReviews() {
+  fetch("/api/reviews")
+    .then(res => res.json())
+    .then(data => {
+      data.map(item => {
+        const ulReviews = document.getElementById("reviews-list");
+        const liReview = document.createElement("li");
+        const timeFormated = new Date(item.created_date);
+        const rating = document.getElementById("review__rating");
+        const starItem = document.createElement("div");
+
+      /*  for (let i = 1; i <= item.stars; i++) {
+          starItem.innerHTML = `&#9733;`;
+          rating.appendChild(starItem);
+        }*/
+
+        liReview.innerHTML = `
         <figure class="review">
           <blockquote class="review__text">${item.description}</blockquote>
             <figcaption class="review__user">
@@ -16,18 +23,18 @@
               alt="${item.name}">
               <div class="review__user-box">
                 <p class="review__user-name">${item.name}</p>
-                <p class="review__user-date">${item.created_date}</p>
+                <p class="review__user-date">${timeFormated}</p>
               </div>
-              <div class="review__rating">${item.stars}</div>
+              <div id="review__rating">${item.stars}</div>
             </figcaption>
           </figure>`;
-          ulReviews.appendChild(liReview);
-          });
+        ulReviews.appendChild(liReview);
       });
-  }
-  
-  function reviewRouter(req, router) {
-    document.body.innerHTML = `
+    });
+}
+
+function reviewRouter(req, router) {
+  document.body.innerHTML = `
     <body>
       <div class="container">
         <header>
@@ -64,16 +71,16 @@
             </div>
           </nav>
           <main class="main-view">
-            <figure class="user-reviews">
+              <figure class="user-reviews">
               <ul id="reviews-list"></ul>
             </figure>
+            </div>
           </main>
         </div>
       </div>
     </body>
     `;
-    renderReviews()
-  }
-  
-  export default reviewRouter;
-  
+  renderReviews();
+}
+
+export default reviewRouter;

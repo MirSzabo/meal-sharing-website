@@ -68,7 +68,7 @@ function homeRouter(req, router) {
       <header>
         <h1>meal sharing </h1>
         <form action="#" class="search">
-          <input type="text" class="search__input" placeholder="Search meals">
+          <input type="text" name="search" id="myInput" class="search__input" autocomplete="off" onkeyup="searchFunction()" placeholder="Search meals">
         </form>
         <nav class="user-nav">
           <div class="user-nav__icon-box">

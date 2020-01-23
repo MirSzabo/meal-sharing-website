@@ -11,7 +11,7 @@ function mealsId(req, router) {
         .map(item => {
           const ulMeals = document.getElementById("meals");
           const liMeal = document.createElement("li");
-
+          console.log(item.available_reservations)
           liMeal.innerHTML = `
        <div class="meal">
        <div class="image-container">
@@ -22,8 +22,10 @@ function mealsId(req, router) {
         <div class="meal-container"> 
           <div class="meal__heading">${item.title}</div>
           <div class="meal__description">${item.description}</div>
-          <div class="meal__location">${item.location}</div>
-          <div class="meal__price">${item.price} DKK</div>
+          <div class="meal__location"><b>Address:</b> ${item.location}</div>
+          <div class="meal__reservations"><b>Max reservations:</b> ${item.max_reservations}</div>
+          <div class="meal__reservations"><b>Available reservations:</b> ${item.available_reservations}</div>
+          <div class="meal__price"><b>Price:</b> ${item.price} DKK</div>
         </div> 
        </div>`;
           ulMeals.appendChild(liMeal);
@@ -118,7 +120,7 @@ function mealsId(req, router) {
           email.value = "";
         });
     } else {
-      message.innerHTML = `Please, fill in all the collumns.`;
+      message.innerHTML = `Please, fill in all the columns.`;
     }
   });
 }

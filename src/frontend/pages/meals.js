@@ -105,7 +105,7 @@ function allMealsRouter(req, router) {
       max_reservations,
       price
     };
-
+    if (title !== "" && description !== "" && location !== "" && when !== "" && max_reservations !== "" && price !== "") {
     fetch("/api/meals", {
       method: "POST",
       headers: {
@@ -120,6 +120,9 @@ function allMealsRouter(req, router) {
         const message = document.getElementById("message");
         message.innerHTML = text;
       });
+    } else {
+      message.innerHTML = `Please, fill in all the columns.`;
+    }
   });
 }
 
