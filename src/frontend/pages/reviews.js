@@ -56,12 +56,8 @@
               <li class="side-nav__item">
                   <a href="/meals" class="side-nav__link">Create a Meal</a>
               </li>
-              <li class="side-nav__item">
+              <li class="side-nav__item side-nav__item--active">
                   <a href="/reviews" class="side-nav__link">Reviews</a>
-              </li>
-              </li>
-              <li class="side-nav__item">
-                  <a href="/reviews" class="side-nav__link">Write us</a>
               </li>
             </ul>
             <div class="legal">

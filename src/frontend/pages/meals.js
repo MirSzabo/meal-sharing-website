@@ -46,7 +46,7 @@ function allMealsRouter(req, router) {
         </header>
         <div class="image-container">
         <h2>Meal sharing project</h2>
-          <img class="main_picture" src= "public/img/eat-together.jpg">
+          <img class="main_picture" src="public/img/eat-together.jpg">
         </div>
         <div class="content">
           <nav class="sidebar">
@@ -54,20 +54,16 @@ function allMealsRouter(req, router) {
               <li class="side-nav__item">
                   <a href="/" class="side-nav__link">Home</a>
               </li>
-              <li class="side-nav__item">
+              <li class="side-nav__item side-nav__item--active">
                   <a href="/meals" class="side-nav__link">Create a Meal</a>
               </li>
               <li class="side-nav__item">
                   <a href="/reviews" class="side-nav__link">Reviews</a>
               </li>
-              </li>
-              <li class="side-nav__item">
-                  <a href="/reviews" class="side-nav__link">Write us</a>
-              </li>
             </ul>
             <div class="legal">
               &copy 2020 by Miroslava Szabo. All rights reserved.
-              <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+              <div class="legal__icons">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
             </div>
           </nav>
           <main class="main-view">
@@ -77,12 +73,12 @@ function allMealsRouter(req, router) {
             <div class="create-meal">
             <h3>Create a New Meal</h3>
               <form method="POST" action="api/meals/">
-                <input type="text" id="title" name="title" placeholder="title">
-                <input type="text" id="description" name="description" placeholder="description">
-                <input type="text" id="location" name="location" placeholder="location">
-                <input type="text" id="when" name="when" placeholder="when">
-                <input type="text" id="max_reservations" name="reservations" placeholder="reservations">
-                <input type="text" id="price" name="price" placeholder="price">
+                <input type="text" id="title" name="title" placeholder="Title">
+                <input type="text" id="description" name="description" placeholder="Description">
+                <input type="text" id="location" name="location" placeholder="Location">
+                <input type="text" id="when" name="when" placeholder="When">
+                <input type="text" id="max_reservations" name="reservations" placeholder="Reservations">
+                <input type="text" id="price" name="price" placeholder="Price">
                 <input type="button" id="newMealButton" value="send" >
                 <p id="message"></p>
               </form>
@@ -115,8 +111,7 @@ function allMealsRouter(req, router) {
     fetch("/api/meals", {
       method: "POST",
       headers: {
-        Accept: "application/json, text/plain, */*",
-        "Content Type": "application/json"
+        "Content-Type": "application/json"
       },
       body: JSON.stringify(data)
     })

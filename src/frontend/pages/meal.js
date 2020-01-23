@@ -1,18 +1,18 @@
 function mealsId(req, router) {
   console.log(req.param.id);
 
-  fetch("/api/meals/"+ req.param.id)
-  .then(res => res.json())
-  .then(data => {
-    data
-    .filter(item => {
-      return item.id == req.param.id;
-    })
-    .map(item => {
-      const ulMeals = document.getElementById("meals");
-      const liMeal = document.createElement("li");
+  fetch("/api/meals/" + req.param.id)
+    .then(res => res.json())
+    .then(data => {
+      data
+        .filter(item => {
+          return item.id == req.param.id;
+        })
+        .map(item => {
+          const ulMeals = document.getElementById("meals");
+          const liMeal = document.createElement("li");
 
-      liMeal.innerHTML = `
+          liMeal.innerHTML = `
        <div class="meal">
        <div class="image-container">
         <img class="meal-image"
@@ -24,12 +24,11 @@ function mealsId(req, router) {
           <div class="meal__description">${item.description}</div>
           <div class="meal__location">${item.location}</div>
           <div class="meal__price">${item.price} DKK</div>
-          <a href="/meals/${item.id}" class="button">Book now</a>
         </div> 
        </div>`;
-      ulMeals.appendChild(liMeal);
+          ulMeals.appendChild(liMeal);
+        });
     });
-  });
 
   document.body.innerHTML = `
   <body>
@@ -63,28 +62,67 @@ function mealsId(req, router) {
             <li class="side-nav__item">
                 <a href="/reviews" class="side-nav__link">Reviews</a>
             </li>
-            </li>
-            <li class="side-nav__item">
-                <a href="/reviews" class="side-nav__link">Write us</a>
-            </li>
           </ul>
           <div class="legal">
             &copy 2020 by Miroslava Szabo. All rights reserved.
-            <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+            <div class="legal__icons">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
           </div>
         </nav>
         <main class="main-view">
           <div class="meal-description">
             <ul id="meals" class="meals-list"></ul>
           </div>
-          <figure class="user-reviews">
-            <ul id="reviews-list"></ul>
-          </figure>
+          <div class="create-meal">
+            <h3>Book this Meal</h3>
+              <form method="POST" action="api/meals/">
+                <input type="text" id="name" name="name" placeholder="Name">
+                <input type="tel" id="phonenumber" name="phonenumber" placeholder="Phone number">
+                <input type="email" id="email" name="email" placeholder="Email">
+                <input type="button" id="newBookingButton" value="send" >
+                <p id="message"></p>
+              </form>
+            </div>
         </main>
       </div>
     </div>
   </body>
   `;
+
+  const button = document.getElementById("newBookingButton");
+  button.addEventListener("click", () => {
+    const name = document.getElementById("name").value;
+    const phonenumber = document.getElementById("phonenumber").value;
+    const email = document.getElementById("email").value;
+    const mealId = req.param.id;
+
+    const data = {
+      name,
+      phonenumber,
+      email,
+      mealId
+    };
+    if (name !== "" && phonenumber !== "" && email !== "") {
+      fetch("/api/reservations", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      })
+        .then(res => {
+          return res.json();
+        })
+        .then(data => {
+          console.log(data);
+          message.innerHTML = ` Thank you for your order.`;
+          name.value = "";
+          phonenumber.value = "";
+          email.value = "";
+        });
+    } else {
+      message.innerHTML = `Please, fill in all the collumns.`;
+    }
+  });
 }
 
 export default mealsId;
