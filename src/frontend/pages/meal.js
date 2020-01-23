@@ -34,9 +34,7 @@ function mealsId(req, router) {
   <body>
     <div class="container">
       <header>
-        <h1>meal sharing 
-          <img class="logo" alt="logo" src="../../../public/logo.svg">
-        </h1>
+        <h1>meal sharing</h1>
         <form action="#" class="search">
           <input type="text" class="search__input" placeholder="Search meals">
         </form>
@@ -48,7 +46,7 @@ function mealsId(req, router) {
       </header>
       <div class="image-container">
       <h2>Meal sharing project</h2>
-        <img class="main_picture" src= "../../../public/eat-together.jpg">
+        <img class="main_picture" src= "https://scontent-arn2-1.xx.fbcdn.net/v/t1.15752-9/s2048x2048/83024123_501274407027176_8535718304994557952_n.jpg?_nc_cat=103&_nc_ohc=Hc9CJSXf3ekAX97nqJY&_nc_ht=scontent-arn2-1.xx&_nc_tp=1002&oh=e3b0fa918c6ba557e551f78bf7b10218&oe=5ECD41F0">
       </div>
       <div class="content">
         <nav class="sidebar">
