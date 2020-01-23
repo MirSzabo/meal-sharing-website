@@ -32,7 +32,7 @@
       <div class="container">
         <header>
           <h1>meal sharing 
-            <img class="logo" alt="logo" src="public/img/logo.svg">
+            <img class="logo" alt="logo" src="../../../public/logo.svg">
           </h1>
           <form action="#" class="search">
             <input type="text" class="search__input" placeholder="Search meals">
@@ -45,7 +45,7 @@
         </header>
         <div class="image-container">
         <h2>Meal sharing project</h2>
-          <img class="main_picture" src= "public/img/eat-together.jpg">
+          <img class="main_picture" src= "../../../public/eat-together.jpg">
         </div>
         <div class="content">
           <nav class="sidebar">
