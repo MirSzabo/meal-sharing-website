@@ -12,6 +12,7 @@ function renderReviews() {
 
         liReview.innerHTML = `
         <figure class="review">
+        <blockquote class="review__title">${item.title}</blockquote>
           <blockquote class="review__text">${item.description}</blockquote>
             <figcaption class="review__user">
               <img class="review__photo"
@@ -67,13 +68,23 @@ function reviewRouter(req, router) {
             </div>
           </nav>
           <main class="main-view">
-              <figure class="user-reviews">
+            <figure class="user-reviews__all">
               <ul id="reviews-list"></ul>
             </figure>
-            </div>
+            <div class="create-review">
+            <h3>Write a Review</h3>
+              <form method="POST" action="api/meals/">
+                <input type="text" id="name" name="name" placeholder="Name">
+                <input type="text" id="title" name="title" placeholder="Title">
+                <input type="text" id="description" name="description" placeholder="Description">
+                <input type="text" id="meal_id" name="meal_id" placeholder="Meal ID">
+                <input type="number" id="stars" name="stars" placeholder="Stars" min="1" max="5">
+                <input type="button" id="newBookingButton" value="send" >
+                <p id="message"></p>
+              </form>
+            </div>      
           </main>
         </div>
-      </div>
     </body>
     `;
   renderReviews();

@@ -298,6 +298,13 @@ h2 {
   position: relative;
   overflow: hidden;
 }
+
+.review__title {
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  z-index: 10;
+  position: relative;
+}
 .review__text {
   margin-bottom: 2rem;
   z-index: 10;
@@ -415,5 +422,73 @@ h3 {
 }
 .create-meal input[type="submit"]:hover,
 .create-meal input[type="button"]:hover{
+	background: var(--color-primary-dark);
+}
+.user-reviews__all {
+  flex: 0 0 60%;
+  margin-right: 4.5rem;
+}
+
+.create-review{
+  padding: .5rem;
+}
+.create-review input[type="text"],
+.create-review input[type="date"],
+.create-review input[type="datetime"],
+.create-review input[type="email"],
+.create-review input[type="tel"],
+.create-review input[type="search"],
+.create-review input[type="time"],
+.create-review input[type="number"],
+.create-review textarea,
+.create-review select 
+{
+	-webkit-transition: all 0.30s ease-in-out;
+	-moz-transition: all 0.30s ease-in-out;
+	-ms-transition: all 0.30s ease-in-out;
+	-o-transition: all 0.30s ease-in-out;
+	outline: none;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 100%;
+	background-color: #fff;
+	margin-bottom: 4%;
+	border: 1px solid #ccc;
+	padding: 3%;
+}
+.create-review input[type="text"]:focus,
+.create-review input[type="date"]:focus,
+.create-review input[type="datetime"]:focus,
+.create-review input[type="email"]:focus,
+.create-review input[type="tel"]:focus,
+.create-review input[type="search"]:focus,
+.create-review input[type="time"]:focus,
+.create-review input[type="number"]:focus,
+.create-review textarea:focus,
+.create-review select:focus
+{
+	box-shadow: 0 0 5px var(--color-grey-dark-2);
+	padding: 2%;
+  border: 1px solid var(--color-grey-dark-3);
+  background-color: #fff;
+}
+
+.create-review input[type="submit"],
+.create-review input[type="button"]{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 100%;
+  padding: 2%;
+	background: var(--color-primary-dark);
+	border-bottom: 2px solid var(--color-primary-dark);
+	border-top-style: none;
+	border-right-style: none;
+	border-left-style: none;	
+	color: #fff;
+}
+.create-review input[type="submit"]:hover,
+.create-review input[type="button"]:hover{
 	background: var(--color-primary-dark);
 }
