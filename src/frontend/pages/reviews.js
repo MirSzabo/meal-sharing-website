@@ -5,14 +5,10 @@ function renderReviews() {
       data.map(item => {
         const ulReviews = document.getElementById("reviews-list");
         const liReview = document.createElement("li");
-        const timeFormated = new Date(item.created_date);
+        const dateFull = new Date(item.created_date);
+          let dateFormated = dateFull.getDate() + "-" + (dateFull.getMonth() + 1) + "-" + dateFull.getFullYear();
         const rating = document.getElementById("review__rating");
         const starItem = document.createElement("div");
-
-      /*  for (let i = 1; i <= item.stars; i++) {
-          starItem.innerHTML = `&#9733;`;
-          rating.appendChild(starItem);
-        }*/
 
         liReview.innerHTML = `
         <figure class="review">
@@ -23,9 +19,9 @@ function renderReviews() {
               alt="${item.name}">
               <div class="review__user-box">
                 <p class="review__user-name">${item.name}</p>
-                <p class="review__user-date">${timeFormated}</p>
+                <p class="review__user-date">${dateFormated}</p>
               </div>
-              <div id="review__rating">${item.stars}</div>
+              <div id="review__rating">${`&#9733;`.repeat(item.stars)}</div>
             </figcaption>
           </figure>`;
         ulReviews.appendChild(liReview);

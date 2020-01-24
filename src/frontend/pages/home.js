@@ -42,6 +42,9 @@ function renderReviews() {
           const ulReviews = document.getElementById("reviews-list");
           const liReview = document.createElement("li");
 
+          const dateFull = new Date(item.created_date);
+          let dateFormated = dateFull.getDate() + "-" + (dateFull.getMonth() + 1) + "-" + dateFull.getFullYear();
+
           liReview.innerHTML = `
       <figure class="review">
         <blockquote class="review__text">${item.description}</blockquote>
@@ -51,9 +54,9 @@ function renderReviews() {
             alt="${item.name}">
             <div class="review__user-box">
               <p class="review__user-name">${item.name}</p>
-              <p class="review__user-date">${item.created_date}</p>
+              <p class="review__user-date">${dateFormated}</p>
             </div>
-            <div class="review__rating">${item.stars}</div>
+            <div class="review__rating">${`&#9733;`.repeat(item.stars)}</div>
           </figcaption>
         </figure>`;
         ulReviews.appendChild(liReview);
