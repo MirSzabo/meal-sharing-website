@@ -24,6 +24,14 @@ html {
   box-sizing: border-box;
   font-size: 62.5%; /*1rem = 10px*/
 }
+
+@media only screen and (max-width: 68.75em) {
+  html {
+    box-sizing: border-box;
+    font-size: 50%; /*1rem = 8px*/
+  }
+}
+
 body {
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
@@ -56,6 +64,14 @@ header {
 h1 {
   margin-left: 3rem;
 }
+
+@media only screen and (max-width: 68.75em) {
+  html {
+    font-size: 45%;
+  }
+}
+
+
 .logo {
   height: 3.25rem;
 }
@@ -138,10 +154,23 @@ h2 {
   box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.3);
 
   min-height: 50rem;
+
+}
+@media only screen and (max-width: 75em) {
+  .container {
+    margin: 0;
+    max-width: 100%;
+    width: 100%;
+  }
 }
 
 .content {
   display: flex;
+}
+@media only screen and (max-width: 56.25em) {
+  .content {
+    flex-direction: column;
+  }
 }
 
 .sidebar {
@@ -154,14 +183,34 @@ h2 {
 .side-nav {
   font-size: 1.4rem;
   list-style: none;
-  margin-top: 3.5rem;;
+  margin-top: 3.5rem;
 }
+
+@media only screen and (max-width: 56.25em) {
+  .side-nav {
+    display: flex;
+    margin: 0;
+  }
+}
+
 .side-nav__item {
   position: relative;
 }
 
+@media only screen and (max-width: 56.25em) {
+  .side-nav__item {
+    flex: 1;
+  }
+}
+
 .side-nav__item:not(:last-child) {
   margin-bottom: 0.5rem;
+}
+
+@media only screen and (max-width: 56.25em) {
+  .side-nav__item:not(:last-child) {
+    margin-bottom: 0;
+  }
 }
 
 .side-nav__item::before {
@@ -192,6 +241,13 @@ h2 {
   position: relative;
   z-index: 10;
 }
+
+@media only screen and (max-width: 56.25em) {
+  .side-nav__link:link {
+    justify-content: center;
+    padding: 2rem;
+  }
+}
 .side-nav__link:visited {
   color: var(--color-grey-light-1);
   text-decoration: none;
@@ -202,6 +258,13 @@ h2 {
   z-index: 10;
 }
 
+@media only screen and (max-width: 56.25em) {
+  .side-nav__link:visited {
+    justify-content: center;
+    padding: 2rem;
+  }
+}
+
 .legal {
   font-size: 1.2rem;
   color: var(color-grey-light-4);
@@ -209,6 +272,12 @@ h2 {
   padding: 2.5rem;
   text-decoration: none;
 }
+@media only screen and (max-width: 56.25em) {
+  .legal {
+    display: none;
+  }
+}
+
 .legal__icons a{
   text-decoration: none;
   color: var(--color-primary-dark);
@@ -222,9 +291,34 @@ h2 {
   border-bottom: 1px solid var(color-grey-light-2);
 }
 
+@media only screen and (max-width: 56.25em) {
+  .main-view {
+    padding: 3rem;
+  }
+}
+
+@media only screen and (max-width: 37.5em) {
+  .main-view {
+    flex-direction: column;
+  }
+}
+
 .meal-description {
   flex: 0 0 60%;
   margin-right: 4.5rem;
+}
+
+@media only screen and (max-width: 56.25em) {
+  .meal-description {
+    margin-right: 3rem;
+  }
+}
+
+@media only screen and (max-width: 37.5em) {
+  .main-view {
+    margin-right: 0;
+    margin-bottom: 3rem;
+  }
 }
 
 .meals-list {
@@ -297,6 +391,13 @@ h2 {
   margin-bottom: 3.5rem;
   position: relative;
   overflow: hidden;
+}
+
+@media only screen and (max-width: 56.25em) {
+  .review {
+    padding: 2rem;
+    margin-bottom: 3rem;
+  }
 }
 
 .review__title {
@@ -427,6 +528,11 @@ h3 {
 .user-reviews__all {
   flex: 0 0 60%;
   margin-right: 4.5rem;
+}
+@media only screen and (max-width: 56.25em) {
+  .user-reviews__all {
+    margin-right: 3rem;
+  }
 }
 
 .create-review{
