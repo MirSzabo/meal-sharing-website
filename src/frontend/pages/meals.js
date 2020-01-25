@@ -77,7 +77,7 @@ function allMealsRouter(req, router) {
                 <input type="text" id="when" name="when" placeholder="When">
                 <input type="text" id="max_reservations" name="reservations" placeholder="Reservations">
                 <input type="text" id="price" name="price" placeholder="Price">
-                <input type="button" id="newMealButton" value="send" >
+                <input type="button" id="newMealButton" value="Send" >
                 <p id="message"></p>
               </form>
             </div>

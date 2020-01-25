@@ -7,8 +7,6 @@ function renderReviews() {
         const liReview = document.createElement("li");
         const dateFull = new Date(item.created_date);
           let dateFormated = dateFull.getDate() + "-" + (dateFull.getMonth() + 1) + "-" + dateFull.getFullYear();
-        const rating = document.getElementById("review__rating");
-        const starItem = document.createElement("div");
 
         liReview.innerHTML = `
         <figure class="review">
@@ -79,7 +77,7 @@ function reviewRouter(req, router) {
                 <input type="text" id="description" name="description" placeholder="Description">
                 <input type="text" id="meal_id" name="meal_id" placeholder="Meal ID">
                 <input type="number" id="stars" name="stars" placeholder="Stars" min="1" max="5">
-                <input type="button" id="newBookingButton" value="send" >
+                <input type="button" id="newReviewButton" value="Send" >
                 <p id="message"></p>
               </form>
             </div>      
@@ -88,6 +86,46 @@ function reviewRouter(req, router) {
     </body>
     `;
   renderReviews();
+
+  const button = document.getElementById("newReviewButton");
+  button.addEventListener("click", () => {
+    const name = document.getElementById("name").value;
+    const title = document.getElementById("title").value;
+    const description = document.getElementById("description").value;
+    const meal_id = document.getElementById("meal_id").value;
+    const stars = document.getElementById("stars").value;
+
+    const data = {
+      name,
+      title,
+      description,
+      meal_id,
+      stars
+    };
+    if (name !== "" && title !== "" && description !== "" && meal_id !== "" && stars !== "") {
+    fetch("/api/reviews", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+      .then(res => {
+        return res.json();
+      })
+      .then(data => {
+        console.log(data);
+        message.innerHTML = `Thank you for the review.`;
+        name.value = "";
+        title.value = "";
+        description.value = "";
+        meal_id.value = "";
+        stars.value = "";
+      });
+    } else {
+      message.innerHTML = `Please, fill in all the columns.`;
+    }
+  });
 }
 
 export default reviewRouter;

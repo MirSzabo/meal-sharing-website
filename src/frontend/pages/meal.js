@@ -114,7 +114,7 @@ function mealsId(req, router) {
         })
         .then(data => {
           console.log(data);
-          message.innerHTML = ` Thank you for your order.`;
+          message.innerHTML = `Thank you for your order.`;
           name.value = "";
           phonenumber.value = "";
           email.value = "";

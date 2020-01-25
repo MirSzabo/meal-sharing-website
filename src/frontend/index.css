@@ -76,6 +76,91 @@ h1 {
   height: 3.25rem;
 }
 
+/*search bar template
+ https://www.w3schools.com/howto/howto_js_autocomplete.asp
+.search {
+  flex: 0 0 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.autocomplete {
+  position: relative;
+  display: inline-block;
+}
+input {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
+}
+input[type=text] {
+  background-color: #f1f1f1;
+  width: 100%;
+}
+input[type=submit] {
+  background-color: DodgerBlue;
+  color: #fff;
+}
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+.autocomplete-items div:hover {
+  background-color: #e9e9e9;
+}
+.autocomplete-active {
+  background-color: DodgerBlue !important;
+  color: #ffffff;
+}
+
+.search__input {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background-color: var(--color-grey-light-2);
+  border: none;
+  padding: 0.7rem 2rem;
+  border-radius: 100px;
+  width: 90%;
+  transition: all 0.2s;
+  border: none;
+}
+
+.search__input:focus {
+  outline: none;
+  width: 100%;
+  background-color: var(--color-grey-light-3);
+}
+.search__input::webkit-input-placeholder {
+  font-weight: 100;
+  color: var(--color-grey-light-4);
+}
+
+.btn-secondary {
+  border: none;
+  background-color: var(--color-grey-light-2);
+}
+.btn-secondary:focus {
+  outline: none;
+}
+.btn-secondary:active {
+  transform: translateY(2px);
+}*/
+
 .search {
   flex: 0 0 40%;
   display: flex;
@@ -482,13 +567,9 @@ h3 {
   padding: .5rem;
 }
 .create-meal input[type="text"],
-.create-meal input[type="date"],
-.create-meal input[type="datetime"],
 .create-meal input[type="email"],
 .create-meal input[type="tel"],
 .create-meal input[type="search"],
-.create-meal input[type="time"],
-.create-meal input[type="url"],
 .create-meal textarea,
 .create-meal select 
 {
@@ -507,13 +588,9 @@ h3 {
 	padding: 3%;
 }
 .create-meal input[type="text"]:focus,
-.create-meal input[type="date"]:focus,
-.create-meal input[type="datetime"]:focus,
 .create-meal input[type="email"]:focus,
 .create-meal input[type="tel"]:focus,
 .create-meal input[type="search"]:focus,
-.create-meal input[type="time"]:focus,
-.create-meal input[type="url"]:focus,
 .create-meal textarea:focus,
 .create-meal select:focus
 {

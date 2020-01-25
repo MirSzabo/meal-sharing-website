@@ -1,3 +1,5 @@
+//import { renderMealSearch } from "./search";
+
 function renderMeals() {
   fetch("/api/meals")
     .then(res => res.json())
@@ -70,8 +72,8 @@ function homeRouter(req, router) {
     <div class="container">
       <header>
         <h1>meal sharing </h1>
-        <form action="#" class="search">
-          <input type="text" name="search" id="myInput" class="search__input" autocomplete="off" onkeyup="searchFunction()" placeholder="Search meals">
+        <form id="search-form" class="search" autocomplete="off" method="GET" action="/meals">
+          <input id="myInput" class="search__input" name="search" type="text" placeholder="Search meals">
         </form>
         <nav class="user-nav">
           <div class="user-nav__icon-box">
@@ -116,6 +118,7 @@ function homeRouter(req, router) {
     </div>
   </body>
   `;
+  //renderMealSearch();
   renderMeals();
   renderReviews();
 }
