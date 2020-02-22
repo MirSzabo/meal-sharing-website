@@ -16,7 +16,6 @@ router.get("/", (req, res) => {
   //api/reservations/	POST	Adds a new reservation	POST api/reservations/
   router.post("/", (req, res) => {
     const reservation = req.body;
-    console.log("reservation:", reservation);
     pool.query("INSERT into reservation SET ?", reservation, (error, results, fields) => {
       if (error) {
         return res.send(error);
@@ -60,7 +59,6 @@ router.get("/", (req, res) => {
   
   //api/reservations/{id}	DELETE	Deletes the reservation by id	DELETE api/reservations/2
   router.delete("/:id", (req, res) => {
-    console.log(req.body);
     pool.query(
       "DELETE FROM `reservation` WHERE `id`=?",
       [req.body.id],
