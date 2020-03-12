@@ -4,35 +4,14 @@ const bodyParser = require("body-parser");
 const app = express();
 const router = express.Router();
 router.use(bodyParser.json());
-const { getSQLQuery } = require("../helpers/helperFuncs.js");
+//const { getSQLQuery } = require("../helpers/helperFuncs.js");//not working
 
 //Body parser middleware
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json()); //app.use(bodyParser.json()) ?????
-
+ 
 router.get("/", (req, res) => {
   const { maxPrice, availableReservations, title, createdAfter, limit } = req.query;
-
-  const queries = {
-    maxPrice: maxPriceQuery(maxPrice),
-    title: titleQuery(title),
-    createdAfter: createdAfterQuery(createdAfter),
-    limit: limitQuery(limit) ? `\n${limitQuery(limit)}` : "",
-    availableReservations: availableReservationsQuery(availableReservations)
-  };
-
-  let whereQuery = "";
-  let whereQueries = [
-    queries["maxPrice"],
-    queries["title"],
-    queries["createdAfter"],
-    queries["availableReservations"]
-  ].filter(q => q !== null);
-  if (whereQueries.length > 0) {
-    whereQuery = `\nWHERE ${whereQueries.join(" AND ")}`;
-  }
-
-  let query = getSQLQuery(whereQuery);
 
   //Get meals that has a price smaller than maxPrice
   //http://localhost:3000/api/meals?maxPrice=90
@@ -129,11 +108,7 @@ router.post("/", (req, res) => {
 
 //api/meals/{id}	GET	Returns meal by id	GET api/meals/2
 router.get("/:id", (req, res) => {
- // let queriedId = Number(req.params.id);
-  //let whereQuery = `\nWHERE meal.id=${queriedId}`;
-  //let query = getSQLQuery(whereQuery);
   pool.query(
-    //query,
     "SELECT * FROM meal WHERE id=?",
     [req.params.id],
     (error, results, fields) => {
