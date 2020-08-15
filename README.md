@@ -1,4 +1,4 @@
-﻿### Installing
+﻿### :zap: Installing
 To install run `npm install`
 
 ## 🎈 Usage <a name="usage"></a>
