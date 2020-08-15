@@ -1,4 +1,4 @@
-﻿### :zap: Installing
+﻿## :zap: Installing
 To install run `npm install`
 
 ## 🎈 Usage <a name="usage"></a>
@@ -9,7 +9,7 @@ To run `npm run dev`
 - [Express](https://expressjs.com/) - Server Framework
 - [NodeJs](https://nodejs.org/en/) - Server Environment
 
-DB tables can be created like so:
+## :eyes: Create tables
 ```
 CREATE TABLE `meal` (
 	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
